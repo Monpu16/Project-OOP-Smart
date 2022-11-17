@@ -1,0 +1,25 @@
+@startuml deploy
+
+Class "abc.ABC" as abc {}
+
+abstract Class Options {
+    +{abstract} start_lottery()
+    +{abstract} enter_lottery()
+    +{abstract} end_lottery()
+}
+
+class Deploy {
+    account: Account 
+    lottery: Lottery 
+
+    + get_deploy(lottery)
+    + start_lottery()
+    + enter_lottery()
+    + end_lottery()
+}
+
+abc <|-- Options
+
+Options <|-- Deploy
+
+@enduml

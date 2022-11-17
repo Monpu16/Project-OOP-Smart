@@ -1,5 +1,5 @@
 from __future__ import annotations
-from scripts.helpful_scripts import get_account, get_contract, fund_with_link
+from helpful_scripts import get_account, get_contract, fund_with_link
 from brownie import Lottery, network, config
 import time
 from abc import ABC, abstractmethod
@@ -41,7 +41,7 @@ class Deploy(Options):
         self.starting_txn = self.lottery_p.start_lottery({'from': self.account_p})
         self.starting_txn.wait(1)
         print('The lottery has started')
-    
+
     def enter_lottery(self):
         self.account_x = get_account()
         self.lottery_x = Lottery[-1]
@@ -60,6 +60,7 @@ class Deploy(Options):
         time.sleep(60)
         print(f'{self.lottery_z.recentWinner()} is the new winner !!!')
 
+
 lottery = Deploy()
 
 lottery.start_lottery()
@@ -67,3 +68,5 @@ lottery.start_lottery()
 lottery.enter_lottery()
 
 lottery.end_lottery()
+
+print(type(lottery.account))
